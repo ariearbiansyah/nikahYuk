@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard — NikahYuk</title>
+<style>
+  :root { --rose: #b8476b; --cream: #fdf6f0; --ink: #2d2226; --muted: #7a6a70; --line: #ead9dd; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+         color: var(--ink); background: var(--cream); }
+  header { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px;
+           background: #fff; border-bottom: 1px solid var(--line); }
+  header b { font-family: Georgia, serif; color: var(--rose); font-size: 1.4rem; }
+  header a { color: var(--rose); font-size: .9rem; }
+  .proto { margin: 0; padding: 6px 16px; background: #fff4d6; color: #7a5b00; font-size: .8rem; text-align: center; }
+  main { max-width: 960px; margin: 0 auto; padding: 16px; display: grid; gap: 16px;
+         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+  section { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
+  h2 { margin: 0 0 12px; font-size: 1rem; color: var(--muted); font-weight: 600; }
+  .hero { grid-column: 1 / -1; background: linear-gradient(135deg, var(--rose), #d77a96); color: #fff; border: 0; }
+  .hero h2 { color: #fde8ee; }
+  .couple { font-family: Georgia, serif; font-size: 1.6rem; margin: 0; }
+  .count { font-size: 2.2rem; font-weight: 700; margin: 8px 0 0; }
+  ul { list-style: none; margin: 0; padding: 0; }
+  li { display: flex; justify-content: space-between; gap: 8px; padding: 10px 0; border-top: 1px solid var(--line); }
+  li:first-child { border-top: 0; }
+  small { display: block; color: var(--muted); }
+  .st { align-self: center; white-space: nowrap; font-size: .75rem; font-weight: 600; padding: 3px 8px; border-radius: 99px; }
+  .dp { background: #fff4d6; color: #7a5b00; }
+  .ok { background: #e3f1ff; color: #1d5a99; }
+  .lunas { background: #e2f6e9; color: #1f7a45; }
+  .bar { height: 10px; background: var(--line); border-radius: 99px; overflow: hidden; margin: 8px 0; }
+  .bar i { display: block; height: 100%; width: 58%; background: var(--rose); }
+  .done { text-decoration: line-through; color: var(--muted); }
+  .rsvp { display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; }
+  .rsvp b { display: block; font-size: 1.6rem; }
+</style>
+</head>
+<body>
+  <header><b>NikahYuk</b><a href="index.html">Keluar</a></header>
+  <p class="proto">Prototipe tampilan — data contoh, bukan data sungguhan.</p>
+  <main>
+    <section class="hero">
+      <h2>Pernikahan</h2>
+      <p class="couple">Rina &amp; Dimas</p>
+      <small style="color:#fde8ee">Sabtu, 12 Juni 2027 · Gedung Sasana Kriya, Jakarta</small>
+      <p class="count"><span id="days">—</span> hari lagi</p>
+    </section>
+
+    <section>
+      <h2>Pesanan</h2>
+      <ul>
+        <li><div>Katering Nusantara<small>Paket Prasmanan 500 pax · Rp85.000.000</small></div><span class="st lunas">Lunas</span></li>
+        <li><div>Sanggar Rias Ayu<small>Paket MUA Akad + Resepsi · Rp12.000.000</small></div><span class="st ok">Terkonfirmasi</span></li>
+        <li><div>Lensa Abadi<small>Paket Foto &amp; Video · Rp18.500.000</small></div><span class="st ok">Terkonfirmasi</span></li>
+        <li><div>Dekor Melati<small>Paket Dekorasi Gold · Rp30.000.000 · bayar DP sebelum 1 jam</small></div><span class="st dp">Menunggu DP</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Budget</h2>
+      <p style="margin:0">Realisasi <b>Rp87.150.000</b> dari rencana <b>Rp150.000.000</b></p>
+      <div class="bar"><i></i></div>
+      <small>Termasuk 3 Pesanan Terkonfirmasi/Lunas dan 2 pos manual (cincin, mahar)</small>
+    </section>
+
+    <section>
+      <h2>Checklist</h2>
+      <ul>
+        <li class="done">Tentukan tanggal Pernikahan</li>
+        <li class="done">Pesan katering</li>
+        <li>Lunasi Pesanan MUA<small>tenggat H-14</small></li>
+        <li>Fitting baju pengantin<small>1 Mei 2027</small></li>
+        <li>Sebar Undangan ke Daftar Tamu</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Undangan · RSVP Tamu</h2>
+      <div class="rsvp">
+        <div><b>212</b><small>Hadir</small></div>
+        <div><b>18</b><small>Tidak hadir</small></div>
+        <div><b>70</b><small>Belum menjawab</small></div>
+      </div>
+      <small style="margin-top:12px">Undangan Premium · 300 Tamu di Daftar Tamu</small>
+    </section>
+  </main>
+  <script>
+    const ms = new Date('2027-06-12T00:00:00+07:00') - Date.now();
+    document.getElementById('days').textContent = Math.max(0, Math.ceil(ms / 864e5));
+  </script>
+</body>
+</html>

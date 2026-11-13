@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Masuk — NikahYuk</title>
+<style>
+  :root { --rose: #b8476b; --rose-dark: #933453; --cream: #fdf6f0; --ink: #2d2226; --muted: #7a6a70; --line: #ead9dd; }
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 16px;
+         font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink);
+         background: linear-gradient(160deg, #fbe4ea, var(--cream) 60%); }
+  .card { width: 100%; max-width: 380px; background: #fff; border-radius: 16px; padding: 32px 24px;
+          box-shadow: 0 10px 30px rgba(184, 71, 107, .15); }
+  h1 { margin: 0; font-family: Georgia, serif; color: var(--rose); font-size: 2rem; text-align: center; }
+  .tagline { margin: 4px 0 24px; text-align: center; color: var(--muted); font-size: .95rem; }
+  label { display: block; font-size: .9rem; margin: 14px 0 6px; }
+  input { width: 100%; padding: 12px; border: 1px solid var(--line); border-radius: 10px; font-size: 1rem; }
+  input:focus { outline: 2px solid var(--rose); border-color: transparent; }
+  button { width: 100%; margin-top: 22px; padding: 13px; border: 0; border-radius: 10px; cursor: pointer;
+           background: var(--rose); color: #fff; font-size: 1rem; font-weight: 600; }
+  button:hover { background: var(--rose-dark); }
+  .links { margin-top: 18px; display: flex; justify-content: space-between; font-size: .9rem; }
+  a { color: var(--rose); }
+  .proto { margin-top: 20px; padding: 8px; border-radius: 8px; background: #fff4d6; color: #7a5b00;
+           font-size: .8rem; text-align: center; }
+</style>
+</head>
+<body>
+  <main class="card">
+    <h1>NikahYuk</h1>
+    <p class="tagline">Rencanakan Pernikahan impian bersama Vendor terverifikasi</p>
+    <form id="login">
+      <label for="email">Email</label>
+      <input id="email" type="email" placeholder="nama@contoh.com" autocomplete="email" required>
+      <label for="password">Kata sandi</label>
+      <input id="password" type="password" placeholder="Minimal 8 karakter" autocomplete="current-password" required>
+      <button type="submit">Masuk</button>
+    </form>
+    <div class="links">
+      <a href="#" onclick="return false">Daftar sebagai Calon Pengantin</a>
+      <a href="#" onclick="return false">Masuk sebagai Vendor</a>
+    </div>
+    <p class="proto">Prototipe tampilan — tanpa autentikasi. Isi apa saja lalu tekan Masuk.</p>
+  </main>
+  <script>
+    document.getElementById('login').addEventListener('submit', (e) => {
+      e.preventDefault();
+      location.href = 'dashboard.html';
+    });
+  </script>
+</body>
+</html>
