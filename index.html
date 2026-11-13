@@ -3,46 +3,85 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Masuk — NikahYuk</title>
+<title>Masuk ke NikahYuk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  :root { --rose: #b8476b; --rose-dark: #933453; --cream: #fdf6f0; --ink: #2d2226; --muted: #7a6a70; --line: #ead9dd; }
+  :root {
+    --pisang: #1E4A3B; --pisang-deep: #143428; --janur: #D4C24A; --prada: #A97A1F;
+    --melati: #F6F7F1; --tinta: #17261F; --redup: #5E6B63; --garis: #DCE0D3;
+  }
   * { box-sizing: border-box; }
-  body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 16px;
-         font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--ink);
-         background: linear-gradient(160deg, #fbe4ea, var(--cream) 60%); }
-  .card { width: 100%; max-width: 380px; background: #fff; border-radius: 16px; padding: 32px 24px;
-          box-shadow: 0 10px 30px rgba(184, 71, 107, .15); }
-  h1 { margin: 0; font-family: Georgia, serif; color: var(--rose); font-size: 2rem; text-align: center; }
-  .tagline { margin: 4px 0 24px; text-align: center; color: var(--muted); font-size: .95rem; }
-  label { display: block; font-size: .9rem; margin: 14px 0 6px; }
-  input { width: 100%; padding: 12px; border: 1px solid var(--line); border-radius: 10px; font-size: 1rem; }
-  input:focus { outline: 2px solid var(--rose); border-color: transparent; }
-  button { width: 100%; margin-top: 22px; padding: 13px; border: 0; border-radius: 10px; cursor: pointer;
-           background: var(--rose); color: #fff; font-size: 1rem; font-weight: 600; }
-  button:hover { background: var(--rose-dark); }
-  .links { margin-top: 18px; display: flex; justify-content: space-between; font-size: .9rem; }
-  a { color: var(--rose); }
-  .proto { margin-top: 20px; padding: 8px; border-radius: 8px; background: #fff4d6; color: #7a5b00;
-           font-size: .8rem; text-align: center; }
+  body { margin: 0; min-height: 100vh; background: var(--melati); color: var(--tinta);
+         font: 400 1rem/1.6 "Plus Jakarta Sans", system-ui, sans-serif;
+         display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
+
+  .gate { position: relative; overflow: hidden; background: var(--pisang); color: var(--melati);
+          padding: 48px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .gate img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+  .gate::after { content: ""; position: absolute; inset: 0;
+                 background: linear-gradient(to top, var(--pisang) 8%, rgba(30, 74, 59, .55) 45%, rgba(30, 74, 59, 0) 75%); }
+  .gate h1, .gate p, .credit { z-index: 1; }
+  .credit { position: absolute; top: 12px; right: 14px; font-size: .72rem; color: rgba(255, 255, 255, .85);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, .5); }
+  .credit a { color: inherit; }
+  @media (prefers-reduced-motion: no-preference) {
+    .gate img { animation: settle 1.6s ease-out both; }
+    @keyframes settle { from { transform: scale(1.08); opacity: .4; } }
+  }
+  .gate h1 { position: relative; margin: 0; font: 400 clamp(2.6rem, 5vw, 4.2rem)/1 Marcellus, serif;
+             letter-spacing: .01em; }
+  .gate p { position: relative; margin: 14px 0 0; max-width: 30ch; color: #CFDACB; font-size: 1.05rem; }
+
+  main { display: flex; align-items: center; justify-content: center; padding: 48px 24px; }
+  form { width: 100%; max-width: 360px; }
+  h2 { margin: 0 0 6px; font: 400 1.9rem/1.2 Marcellus, serif; }
+  .lead { margin: 0 0 28px; color: var(--redup); }
+  label { display: block; margin: 18px 0 6px; font-weight: 500; font-size: .95rem; }
+  input { width: 100%; padding: 12px 14px; font: inherit; color: inherit; background: #fff;
+          border: 1px solid var(--garis); border-radius: 6px; }
+  input:focus-visible { outline: 2px solid var(--pisang); outline-offset: 1px; border-color: var(--pisang); }
+  button { width: 100%; margin-top: 28px; padding: 14px; font: 700 1rem "Plus Jakarta Sans", sans-serif;
+           color: var(--melati); background: var(--pisang); border: 0; border-radius: 6px; cursor: pointer; }
+  button:hover { background: var(--pisang-deep); }
+  button:focus-visible, a:focus-visible { outline: 2px solid var(--prada); outline-offset: 3px; }
+  .alt { margin: 24px 0 0; color: var(--redup); font-size: .95rem; }
+  .alt a { color: var(--pisang); font-weight: 500; }
+  .proto { margin: 36px 0 0; padding-top: 14px; border-top: 1px solid var(--garis);
+           color: var(--redup); font-size: .82rem; }
+
+  @media (max-width: 760px) {
+    body { grid-template-columns: 1fr; }
+    .gate { min-height: 300px; padding: 28px 20px; }
+    main { padding: 32px 20px 40px; align-items: flex-start; }
+  }
 </style>
 </head>
 <body>
-  <main class="card">
+  <section class="gate" aria-label="NikahYuk">
+    <img src="img/janur-kuning.jpg" alt="Hiasan janur kuning anyaman di depan rumah">
+    <small class="credit">Foto: <a href="https://commons.wikimedia.org/wiki/File:Detail_janur_kuning.jpg">Serenity</a>,
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.id">CC BY-SA 4.0</a></small>
     <h1>NikahYuk</h1>
-    <p class="tagline">Rencanakan Pernikahan impian bersama Vendor terverifikasi</p>
+    <p>Janur kuning sudah waktunya melengkung. Siapkan Pernikahan kalian di satu tempat.</p>
+  </section>
+
+  <main>
     <form id="login">
+      <h2>Masuk</h2>
+      <p class="lead">Lanjutkan persiapan Pernikahan kalian.</p>
       <label for="email">Email</label>
       <input id="email" type="email" placeholder="nama@contoh.com" autocomplete="email" required>
       <label for="password">Kata sandi</label>
       <input id="password" type="password" placeholder="Minimal 8 karakter" autocomplete="current-password" required>
       <button type="submit">Masuk</button>
+      <p class="alt">Belum punya akun? <a href="#" onclick="return false">Daftar sebagai Calon Pengantin</a></p>
+      <p class="alt">Punya usaha pernikahan? <a href="#" onclick="return false">Masuk sebagai Vendor</a></p>
+      <p class="proto">Ini prototipe tampilan. Belum ada pengecekan akun, jadi isi apa saja lalu tekan Masuk.</p>
     </form>
-    <div class="links">
-      <a href="#" onclick="return false">Daftar sebagai Calon Pengantin</a>
-      <a href="#" onclick="return false">Masuk sebagai Vendor</a>
-    </div>
-    <p class="proto">Prototipe tampilan — tanpa autentikasi. Isi apa saja lalu tekan Masuk.</p>
   </main>
+
   <script>
     document.getElementById('login').addEventListener('submit', (e) => {
       e.preventDefault();
